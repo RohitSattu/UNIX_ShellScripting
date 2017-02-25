@@ -1,0 +1,34 @@
+# Code written by Rohit Sattu
+
+#!/bin/sh
+
+if [ $# -ne 3 ]; then
+        echo "Usage: sh $0 operand1 operator operand2"
+        exit 1
+fi
+
+power_func () {
+        pow=$1
+        for i in $3
+        do
+                pow=`expr $pow \* $1`
+        done
+        echo $pow
+}
+
+if [ $2 = "+" ]; then
+        echo `expr $1 + $3`
+elif [ $2 = "-" ]; then
+        echo `expr $1 - $3`
+elif [ $2 = "x" ]; then
+        echo `expr $1 \* $3`
+elif [ $2 = "/" ]; then
+        echo `expr $1 / $3`
+elif [ $2 = "%" ]; then
+        echo `expr $1 % $3`
+elif [ $2 = "^" ]; then
+        power_func
+else
+        echo "Error: invalid operator"
+        exit 1
+fi
